@@ -25,7 +25,7 @@
     name: expense
 
 - name: Run common tasks from common
-  ansible.builtin.include_role:
+  include_role:
     name: common
     tasks_from: main   
 
