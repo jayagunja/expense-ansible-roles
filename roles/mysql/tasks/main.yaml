@@ -6,31 +6,31 @@
     - PyMySQL
     - cryptography
 
-  - name: Install mysql server
-    ansible.builtin.package:
-      name: mysql-server
-      state: installed
+- name: Install mysql server
+  ansible.builtin.package:
+    name: mysql-server
+    state: installed
 
-  - name: Start and enable  mysql service
-    ansible.builtin.service:
-      name: mysqld
-      state: started
-      enabled: yes
+- name: Start and enable  mysql service
+  ansible.builtin.service:
+    name: mysqld
+    state: started
+    enabled: yes
 
-  - name: connect to mysql server
-    community.mysql.mysql_info:
-      login_user: "{{ mysql_user_name }}"
-      login_password: "{{ mysql_root_password }}"
-      login_host: mysql.daws82s.fun
-    register: mysql_info
-    ignore_errors: true
+- name: connect to mysql server
+  community.mysql.mysql_info:
+    login_user: "{{ mysql_user_name }}"
+    login_password: "{{ mysql_root_password }}"
+    login_host: mysql.daws82s.fun
+  register: mysql_info
+  ignore_errors: true
 
-  - name: print the mysql output
-    ansible.builtin.debug:
-      msg: "{{ mysql_info }}"
+- name: print the mysql output
+  ansible.builtin.debug:
+    msg: "{{ mysql_info }}"
 
-  - name: setup custome password 
-    ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_root_password }} "
-    when: mysql_info.failed is true 
+- name: setup custome password 
+  ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_root_password }} "
+  when: mysql_info.failed is true 
 
 
