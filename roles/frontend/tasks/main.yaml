@@ -8,6 +8,11 @@
     name: nginx
     state: started
     enabled: yes
+
+- name: Run common tasks from common
+  include_role:
+    name: common
+    tasks_from: main 
   
 # - name: delete html directory
 #   ansible.builtin.file:
