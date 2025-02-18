@@ -1,5 +1,5 @@
 MYSQL_USER: root
-MYSQL_PASSWORD: ExpenseApp@1
-MYSQL_HOST: mysql.daws82s.fun
+MYSQL_PASSWORD: ExpenseApp1
+# MYSQL_HOST: mysql.daws82s.fun
 APP_LOCATION: /app
 COMPONENT: backend
